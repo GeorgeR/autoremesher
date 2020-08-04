@@ -8,7 +8,7 @@ language: cpp
 matrix:
   include:
     - os: linux
-      dist: trusty
+      dist: xenial
       sudo: required
       compiler: gcc
       addons:
@@ -17,13 +17,12 @@ matrix:
             - ubuntu-toolchain-r-test
     - os: osx
       compiler: clang
-      osx_image: xcode9.3
+      osx_image: xcode9.4
 
 install:
   # (Linux) Prepare build environment
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository --yes ppa:beineri/opt-qt591-trusty; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo add-apt-repository --yes ppa:beineri/opt-qt591-xenial; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
-  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install gcc-4.9 g++-4.9; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt install cmake; fi
   
   # (Linux) Install CGAL
@@ -31,12 +30,12 @@ install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install libcgal-dev; fi
   
   # (Linux) Install Boost
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then tar -xzf boost_1_66_0.tar.gz; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd boost_1_66_0; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./bootstrap.sh; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ./b2 install; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ../; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then tar -xzf boost_1_66_0.tar.gz; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd boost_1_66_0; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./bootstrap.sh; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ./b2 install; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then cd ../; fi
   
   # (Linux) Build CGAL from source
   - wget https://github.com/CGAL/cgal/releases/download/releases/CGAL-5.1-beta1/CGAL-5.1-beta1.zip

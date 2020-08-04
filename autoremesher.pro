@@ -76,7 +76,7 @@ unix:!macx {
 
 	QMAKE_CXXFLAGS_RELEASE += -O3
 
-	QMAKE_CXXFLAGS += -std=c++1y
+	QMAKE_CXXFLAGS += -std=c++14
 }
 
 win32 {
